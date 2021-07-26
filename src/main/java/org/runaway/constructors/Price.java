@@ -1,4 +1,4 @@
-package main.java.org.runaway.constructors;
+package org.runaway.constructors;
 
 import java.util.Date;
 

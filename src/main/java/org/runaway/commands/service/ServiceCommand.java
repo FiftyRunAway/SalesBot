@@ -1,4 +1,4 @@
-package main.java.org.runaway.commands.service;
+package org.runaway.commands.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

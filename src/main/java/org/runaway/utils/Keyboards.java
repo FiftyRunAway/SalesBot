@@ -1,7 +1,7 @@
-package main.java.org.runaway.utils;
+package org.runaway.utils;
 
-import main.java.org.runaway.database.MongoDB;
-import main.java.org.runaway.database.UtilsDB;
+ import org.runaway.database.MongoDB;
+import org.runaway.database.UtilsDB;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;

@@ -1,11 +1,11 @@
-package main.java.org.runaway.database;
+package org.runaway.database;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import main.java.org.runaway.utils.Vars;
+import org.runaway.utils.Vars;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

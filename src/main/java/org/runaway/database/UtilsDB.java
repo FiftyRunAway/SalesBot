@@ -1,15 +1,15 @@
-package main.java.org.runaway.database;
+package org.runaway.database;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import main.java.org.runaway.constructors.App;
-import main.java.org.runaway.constructors.Price;
-import main.java.org.runaway.steam.Steam;
-import main.java.org.runaway.utils.AppType;
-import main.java.org.runaway.utils.Utils;
-import main.java.org.runaway.utils.Vars;
 import org.bson.Document;
+import org.runaway.constructors.App;
+import org.runaway.constructors.Price;
+import org.runaway.steam.Steam;
+import org.runaway.utils.AppType;
+import org.runaway.utils.Utils;
+import org.runaway.utils.Vars;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

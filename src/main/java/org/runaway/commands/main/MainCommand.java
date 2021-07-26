@@ -1,6 +1,6 @@
-package main.java.org.runaway.commands.main;
+package org.runaway.commands.main;
 
-import main.java.org.runaway.utils.Vars;
+import org.runaway.utils.Vars;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;

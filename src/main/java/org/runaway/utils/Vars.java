@@ -1,4 +1,4 @@
-package main.java.org.runaway.utils;
+package org.runaway.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;

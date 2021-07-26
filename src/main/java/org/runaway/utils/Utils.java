@@ -1,4 +1,4 @@
-package main.java.org.runaway.utils;
+package org.runaway.utils;
 
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.User;

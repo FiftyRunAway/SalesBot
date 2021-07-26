@@ -1,9 +1,9 @@
-package main.java.org.runaway.commands.main.cmds;
+package org.runaway.commands.main.cmds;
 
-import main.java.org.runaway.commands.main.MainCommand;
-import main.java.org.runaway.database.MongoDB;
-import main.java.org.runaway.database.UtilsDB;
-import main.java.org.runaway.utils.Utils;
+import org.runaway.commands.main.MainCommand;
+import org.runaway.database.MongoDB;
+import org.runaway.database.UtilsDB;
+import org.runaway.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.Chat;

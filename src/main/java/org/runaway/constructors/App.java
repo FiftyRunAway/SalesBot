@@ -1,6 +1,6 @@
-package main.java.org.runaway.constructors;
+package org.runaway.constructors;
 
-import main.java.org.runaway.utils.AppType;
+import org.runaway.utils.AppType;
 
 public class App {
 

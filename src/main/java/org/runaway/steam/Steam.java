@@ -1,8 +1,5 @@
-package main.java.org.runaway.steam;
+package org.runaway.steam;
 
-import main.java.org.runaway.constructors.App;
-import main.java.org.runaway.constructors.Price;
-import main.java.org.runaway.utils.AppType;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -10,6 +7,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.runaway.constructors.App;
+import org.runaway.constructors.Price;
+import org.runaway.utils.AppType;
 
 import java.io.IOException;
 import java.util.Date;

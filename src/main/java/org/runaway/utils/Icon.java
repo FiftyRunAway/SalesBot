@@ -1,4 +1,4 @@
-package main.java.org.runaway.utils;
+package org.runaway.utils;
 
 import com.vdurmont.emoji.EmojiParser;
 
