@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/dependency/* target.classes.org.runaway.Bot
+bot: java -jar build/libs/SalesBot 1.0-SNAPSHOT.jar
