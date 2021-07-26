@@ -1,1 +1,1 @@
-web: java -cp target/classes/;target/dependency/* org.runaway.Bot
+web: java -cp target/classes/:target/dependency/* org.runaway.Bot
