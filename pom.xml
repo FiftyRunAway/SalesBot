@@ -23,7 +23,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>target.classes.org.runaway.Bot</mainClass>
+                            <mainClass>org.runaway.Bot</mainClass>
                             <name>workerBot</name>
                         </program>
                     </programs>
