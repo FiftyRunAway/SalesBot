@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp build/staging:build/staging/* org/runaway/Bot
+web: java -cp target/classes/;target/dependency/* org.runaway.Bot
