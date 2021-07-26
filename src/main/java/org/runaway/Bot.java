@@ -1,12 +1,12 @@
 package org.runaway;
 
-import org.runaway.commands.service.cmds.StartCommand;
-import org.runaway.commands.main.cmds.PricesCommand;
-import org.runaway.commands.main.cmds.RemoveAppCommand;
-import org.runaway.commands.service.cmds.HelpCommand;
 import org.runaway.commands.main.MainCommand;
 import org.runaway.commands.main.cmds.AddAppCommand;
 import org.runaway.commands.main.cmds.ListCommand;
+import org.runaway.commands.main.cmds.PricesCommand;
+import org.runaway.commands.main.cmds.RemoveAppCommand;
+import org.runaway.commands.service.cmds.HelpCommand;
+import org.runaway.commands.service.cmds.StartCommand;
 import org.runaway.database.MongoDB;
 import org.runaway.database.UtilsDB;
 import org.runaway.utils.Icon;
@@ -14,7 +14,6 @@ import org.runaway.utils.Keyboards;
 import org.runaway.utils.Vars;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -35,17 +34,16 @@ public class Bot extends TelegramLongPollingCommandBot {
 
         //Регистрация телеграм бота
         try {
-            ApiContextInitializer.init();
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-            telegramBotsApi.registerBot(new Bot(Vars.BOT_NAME.getString()));
+            telegramBotsApi.registerBot(new Bot());
         } catch (TelegramApiException exception) {
             exception.printStackTrace();
         }
         logger.info("Бот успешно запущен!");
     }
 
-    public Bot(String botUsername) {
-        super(botUsername);
+    public Bot() {
+        super();
 
         register(new StartCommand("start", "Стартовая команда"));
         register(new HelpCommand("help", "Помощь"));
@@ -65,6 +63,11 @@ public class Bot extends TelegramLongPollingCommandBot {
                 e.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public String getBotUsername() {
+        return Vars.BOT_NAME.getString();
     }
 
     @Override
