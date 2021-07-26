@@ -7,19 +7,42 @@ import org.runaway.commands.main.cmds.PricesCommand;
 import org.runaway.commands.main.cmds.RemoveAppCommand;
 import org.runaway.commands.service.cmds.HelpCommand;
 import org.runaway.commands.service.cmds.StartCommand;
+import org.runaway.database.MongoDB;
 import org.runaway.database.UtilsDB;
 import org.runaway.utils.Icon;
 import org.runaway.utils.Keyboards;
 import org.runaway.utils.Vars;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Bot extends TelegramLongPollingCommandBot {
+    private static Logger logger = LoggerFactory.getLogger(Bot.class.getName());
+    public static MongoDB mongoDB;
+
+    public static void main(String[] args) {
+        //Подключение к ДБ
+        mongoDB = new MongoDB();
+
+        //Регистрация телеграм бота
+        try {
+            ApiContextInitializer.init();
+            TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
+            telegramBotsApi.registerBot(new Bot(Vars.BOT_NAME.getString()));
+        } catch (TelegramApiException exception) {
+            exception.printStackTrace();
+        }
+        logger.info("Бот успешно запущен!");
+    }
 
     public Bot(String botUsername) {
         super(botUsername);
