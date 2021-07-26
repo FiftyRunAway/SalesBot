@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -jar target/dependency/sales_bot.jar --port $PORT target/*.war
+web: java -Dserver.port=$PORT -jar target/SalesBot-1.0-SNAPSHOT.jar
