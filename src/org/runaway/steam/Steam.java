@@ -10,8 +10,6 @@ import org.apache.http.util.EntityUtils;
 import org.runaway.constructors.App;
 import org.runaway.constructors.Price;
 import org.runaway.utils.AppType;
-import org.runaway.utils.Utils;
-import org.runaway.utils.Vars;
 
 import java.io.IOException;
 import java.util.Date;

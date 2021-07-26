@@ -1,7 +1,6 @@
 package org.runaway.database;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.Mongo;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
@@ -14,8 +13,6 @@ import org.runaway.utils.Vars;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.print.Doc;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

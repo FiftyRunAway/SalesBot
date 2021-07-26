@@ -4,21 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.runaway</groupId>
-    <artifactId>salesbot</artifactId>
-    <version>1.0</version>
+    <groupId>groupId</groupId>
+    <artifactId>SalesBot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.runaway</groupId>
-                <artifactId>salesbot-plugin</artifactId>
-                <version>1.0</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.1.1</version>
                 <configuration>
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>org.runaway.Main</mainClass>
+                            <mainClass>org.orgrunaway.Main</mainClass>
                             <name>workerBot</name>
                         </program>
                     </programs>

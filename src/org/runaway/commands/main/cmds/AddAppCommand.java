@@ -1,7 +1,6 @@
 package org.runaway.commands.main.cmds;
 
 import org.runaway.commands.service.ServiceCommand;
-import org.runaway.database.MongoDB;
 import org.runaway.database.UtilsDB;
 import org.runaway.utils.Icon;
 import org.runaway.utils.Utils;
@@ -10,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
 
