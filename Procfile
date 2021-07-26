@@ -1,1 +1,1 @@
-bot: java -jar build/libs/SalesBot 1.0-SNAPSHOT.jar
+web:    java $JAVA_OPTS -jar target/dependency/sales_bot.jar --port $PORT target/*.war
