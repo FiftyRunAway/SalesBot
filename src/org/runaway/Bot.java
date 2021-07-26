@@ -1,3 +1,5 @@
+package org.runaway;
+
 import org.runaway.commands.main.MainCommand;
 import org.runaway.commands.main.cmds.AddAppCommand;
 import org.runaway.commands.main.cmds.ListCommand;
