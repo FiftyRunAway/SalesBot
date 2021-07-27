@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -cp target/classes/:target/dependency/* org.runaway.Bot
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/SalesBot-0.0.1-SNAPSHOT.jar
