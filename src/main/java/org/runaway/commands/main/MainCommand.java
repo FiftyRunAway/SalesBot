@@ -1,5 +1,6 @@
 package org.runaway.commands.main;
 
+import org.runaway.utils.Icon;
 import org.runaway.utils.Vars;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ public abstract class MainCommand extends BotCommand {
     }
 
     public static String messageFormat(String text, boolean header) {
-        return header ? "Скидки на ваши игры (на " + Vars.getDateFormatBeautiful().format(addHoursToJavaUtilDate(new Date(), 3)) + ")\n\n" + text : text;
+        return header ? Icon.UPDATE.get() + " Скидки на выбранные игры Steam (на " + Vars.getDateFormatBeautiful().format(addHoursToJavaUtilDate(new Date(), 3)) + ")\n\n" + text : text;
     }
 
     public static Date addHoursToJavaUtilDate(Date date, int hours) {
