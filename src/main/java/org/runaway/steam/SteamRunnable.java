@@ -24,7 +24,7 @@ public class SteamRunnable implements Runnable {
             this.newApp = UtilsDB.updatePrice(app);
         }
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
