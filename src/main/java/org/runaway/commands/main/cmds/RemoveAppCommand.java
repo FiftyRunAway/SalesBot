@@ -37,7 +37,7 @@ public class RemoveAppCommand extends MainCommand {
                     if (UtilsDB.removeFromUser(user.getId(), id)) {
                         sb.append(Icon.CHECK.get()).append(" Игра со SteamID '").append(id)
                                 .append("' успешно удалена!\nОбновите список игр");
-                    } else sb.append("❗Игра с таким SteamID не может быть удалена!");
+                    } else sb.append(Icon.NOT.get()).append(" Игра с таким SteamID не может быть удалена!");
                 } catch (NumberFormatException exception) {
                     sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение!");
                 }
@@ -47,7 +47,7 @@ public class RemoveAppCommand extends MainCommand {
                     keyboardMarkup = Keyboards.getRemoveKeyboard(user.getId());
                     sb.append("Выберите те игры, которые хотите удалить\n\n❗Если вы не видите название нужной игры, тогда лучше удалить SteamID вручную!\n");
                 } else {
-                    sb.append("❗Так не выйдет! Сначала добавьте игру\n");
+                    sb.append(Icon.NOT.get()).append(" Так не выйдет! Сначала добавьте игру\n");
                 }
                 sb.append("Используйте так:\n/remove [SteamID] - удалить SteamID из списка");
             }

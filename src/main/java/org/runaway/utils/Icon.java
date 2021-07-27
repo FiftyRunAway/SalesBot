@@ -6,7 +6,9 @@ public enum Icon {
     MINUS(":heavy_minus_sign:"),
     CHECK(":white_check_mark:"),
     NOT(":x:"),
-    UPDATE(":arrows_counterclockwise:");
+    UPDATE(":arrows_counterclockwise:"),
+    ONE(":one:"),
+    TWO(":two:");
 
     private String value;
 

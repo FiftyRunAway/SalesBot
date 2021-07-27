@@ -43,7 +43,11 @@ public class AddAppCommand extends ServiceCommand {
                 sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение...");
             }
         } else {
-            sb.append("Используйте только так:\n/add <SteamID> - добавить игру из Steam");
+            sb.append("❗Где взять SteamID?\n")
+                    .append(Icon.ONE.get()).append(" Сайт <a href=https://store.steampowered.com/>Steam</a>\n")
+                    .append(Icon.TWO.get()).append(" Сайт <a href=https://steamdb.info/>SteamDB</a> (")
+                    .append(Icon.CHECK.get()).append(" <b>рекомендую</b>\n\n)")
+                    .append("Используйте только так:\n/add <SteamID> - добавить игру из Steam");
         }
         sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null);
 
