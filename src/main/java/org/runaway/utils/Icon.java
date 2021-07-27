@@ -9,7 +9,8 @@ public enum Icon {
     UPDATE(":arrows_counterclockwise:"),
     ONE(":one:"),
     TWO(":two:"),
-    BELL(":bell:");
+    BELL(":bell:"),
+    RAINBOW(":rainbow:");
 
     private String value;
 

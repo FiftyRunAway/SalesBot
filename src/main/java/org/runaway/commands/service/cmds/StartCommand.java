@@ -29,9 +29,9 @@ public class StartCommand extends ServiceCommand {
         String user_last_name = chat.getLastName();
         UtilsDB.registerUser(chat.getId(), userName, user_first_name, user_last_name);
         sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
-                "Добро пожаловать, " + user_first_name + "! \n\nЭто бот, который следит за скидками игр " +
+                Icon.RAINBOW.get() + " Добро пожаловать, " + user_first_name + "! \n\nВы попали в бота, который следит за скидками игр " +
                         "в Steam! Просто нажмите кнопку '/add' внизу, " +
-                        "чтобы начать добавление игр. Другие команды можно посмотреть в '/help'\n\n" +
+                        "чтобы начать добавление SteamID. Другие команды можно посмотреть в '/help'\n\n" +
                         Icon.BELL.get() + "Важная информация: \n" +
                         Icon.ONE.get() + " Если вы добавили неверный SteamID и бот сломался, удалите SteamID вручную\n" +
                         "❗Используйте так: /remove [SteamID]", Keyboards.getMainKeyboard());
