@@ -9,6 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public abstract class MainCommand extends BotCommand {
@@ -34,6 +35,13 @@ public abstract class MainCommand extends BotCommand {
     }
 
     public static String messageFormat(String text, boolean header) {
-        return header ? "Скидки на ваши игры (на " + Vars.getDateFormatBeautiful().format(new Date()) + ")\n\n" + text : text;
+        return header ? "Скидки на ваши игры (на " + Vars.getDateFormatBeautiful().format(addHoursToJavaUtilDate(new Date(), 3)) + ")\n\n" + text : text;
+    }
+
+    public static Date addHoursToJavaUtilDate(Date date, int hours) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
     }
 }
