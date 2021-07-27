@@ -64,6 +64,7 @@ public class Keyboards {
         List<Integer> appids = UtilsDB.getUserApps(user_id);
         if (appids != null && !appids.isEmpty()) {
             appids.forEach(i -> {
+                UtilsDB.checkSteamID(i);
                 String name = UtilsDB.getValue(MongoDB.getAppIdsCollection(), i).first().get("name").toString();
 
                 InlineKeyboardButton btn = InlineKeyboardButton.builder()

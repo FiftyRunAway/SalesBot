@@ -42,6 +42,7 @@ public class Steam {
             String response_name = getResponse(steamId, "basic");
             String[] spl = response_name.substring(10, 80).split(",");
             String name = spl[2].replace("\"name\":", "").replace("\"", "");
+            System.out.println(name);
 
             String response_releaseDate = getResponse(steamId, "release_date");
             boolean released = Boolean.parseBoolean(response_releaseDate.split(":")[5].replace(",\"date\"", ""));

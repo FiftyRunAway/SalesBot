@@ -34,6 +34,7 @@ public class ListCommand extends MainCommand {
         if (appids != null && !appids.isEmpty()) {
             sb.append("Игры, за которыми вы следите\n\n");
             appids.forEach(in -> {
+                UtilsDB.checkSteamID(in);
                 sb.append(i.getAndIncrement()).append(". ").append(UtilsDB.getValue(MongoDB.getAppIdsCollection(), in).first().get("name")).append(" (<b>")
                         .append(in).append("</b>)\n");
             });

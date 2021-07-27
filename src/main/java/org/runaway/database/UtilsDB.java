@@ -99,6 +99,14 @@ public class UtilsDB {
         return null;
     }
 
+    public static boolean checkSteamID(int steamId) {
+        if (!isAppInBase(steamId)) {
+            saveSteamID(steamId);
+            return false;
+        }
+        return true;
+    }
+
     /**
      *
      * @param steamId
