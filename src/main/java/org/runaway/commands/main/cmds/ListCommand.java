@@ -33,10 +33,10 @@ public class ListCommand extends MainCommand {
         AtomicInteger i = new AtomicInteger(1);
         List<Integer> appids = UtilsDB.getUserApps(user.getId());
         if (appids != null && !appids.isEmpty()) {
-            sb.append(Icon.MINUS.get()).append(" Игры, за которыми вы следите\n\n");
+            sb.append(Icon.RIGHT_ARROW.get()).append(" Игры, за которыми вы следите\n\n");
             appids.forEach(in -> {
                 UtilsDB.checkSteamID(in);
-                sb.append(i.getAndIncrement()).append(". ").append(UtilsDB.getValue(MongoDB.getAppIdsCollection(), in).first().get("name")).append(" (<b>")
+                sb.append(Icon.getNumberString(i.getAndIncrement())).append(". ").append(UtilsDB.getValue(MongoDB.getAppIdsCollection(), in).first().get("name")).append(" (<b>")
                         .append(in).append("</b>)\n");
             });
         } else {
