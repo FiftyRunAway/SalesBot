@@ -79,11 +79,12 @@ public class UtilsDB {
 
                 MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
                         new Document("id", user_id).append("apps", apps.isEmpty() ? null : apps.toString()));
+
+                // Удаление из общего списка SteamID (чтобы не забивать бесплатную память MongoDB)
+                removeSteamID(steamId);
                 return true;
             }
         }
-        // Удаление из общего списка SteamID (чтобы не забивать бесплатную память MongoDB)
-        removeSteamID(steamId);
         return false;
     }
 

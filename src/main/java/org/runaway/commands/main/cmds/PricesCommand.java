@@ -50,7 +50,7 @@ public class PricesCommand extends MainCommand {
                     if (milliseconds > 900000) {
                         app = UtilsDB.updatePrice(app);
                     }
-                    sb.append(in.getAndIncrement()).append(". <a href=\"").append("https://store.steampowered.com/app/")
+                    sb.append(Icon.getNumberString(in.getAndIncrement())).append(" <a href=\"").append("https://store.steampowered.com/app/")
                             .append(i).append("/\">").append(app.getName()).append("</a> ");
                     if (app.getAppType() == AppType.PREORDER || app.getAppType() == AppType.NOINFO) {
                         sb.append(app.getPrice().getFinal_price() > 0 ? "(" + app.getPrice().getFinal_price() + " руб.) " + (app.getPrice().getDiscount() > 0 ? Icon.CHECK.get() : Icon.NOT.get()) : Icon.NOT.get()).append("\n    <b>Предзаказ - <i>").append(app.getReleaseDate()).append("</i>")
