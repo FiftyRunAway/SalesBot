@@ -1,6 +1,7 @@
 package org.runaway.commands.service.cmds;
 
 import org.runaway.commands.service.ServiceCommand;
+import org.runaway.utils.Icon;
 import org.runaway.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,13 +24,13 @@ public class HelpCommand extends ServiceCommand {
                 this.getCommandIdentifier()));
         sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
                 "❗*Список команд*\n" +
+                        "/help - помощь\n" +
                         "/prices - просмотреть актуальные цены\n" +
                         "/list - просмотреть текущие игры\n" +
-                        "/add <SteamID> - добавить игру из Steam\n" +
-                        "/remove - удалить игру из списка\n" +
-                        "/help - помощь\n\n" +
-                        "❗Если вы добавили неверный SteamID и бот сломался, удалите игру вручную\n" +
-                        "Используйте: /remove <SteamID>", null);
+                        "/add [SteamID] - добавить игру из Steam\n" +
+                        "/remove - удалить игру из списка\n\n" +
+                        Icon.BELL.get() + " Если вы добавили неверный SteamID и бот сломался, удалите игру вручную\n" +
+                        "❗Используйте так: /remove [SteamID]", null);
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }

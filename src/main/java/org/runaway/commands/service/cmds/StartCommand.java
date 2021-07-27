@@ -2,6 +2,7 @@ package org.runaway.commands.service.cmds;
 
 import org.runaway.commands.service.ServiceCommand;
 import org.runaway.database.UtilsDB;
+import org.runaway.utils.Icon;
 import org.runaway.utils.Keyboards;
 import org.runaway.utils.Utils;
 import org.slf4j.Logger;
@@ -28,13 +29,12 @@ public class StartCommand extends ServiceCommand {
         String user_last_name = chat.getLastName();
         UtilsDB.registerUser(chat.getId(), userName, user_first_name, user_last_name);
         sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
-                "Добро пожаловать, " + user_first_name + "! Это бот, который следит за скидками игр " +
+                "Добро пожаловать, " + user_first_name + "! \n\nЭто бот, который следит за скидками игр " +
                         "в Steam! Просто нажмите кнопку '/add' внизу, " +
                         "чтобы начать добавление игр. Другие команды можно посмотреть в '/help'\n\n" +
-                        "❗Важная информация: \n" +
-                        "1. Если вы добавили неверный SteamID и бот сломался, удалите SteamID вручную\n" +
-                        "    Используйте: /remove <SteamID>\n" +
-                        "2. Пока нет", Keyboards.getMainKeyboard());
+                        Icon.BELL.get() + "Важная информация: \n" +
+                        Icon.ONE.get() + " Если вы добавили неверный SteamID и бот сломался, удалите SteamID вручную\n" +
+                        "❗Используйте так: /remove [SteamID]", Keyboards.getMainKeyboard());
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }

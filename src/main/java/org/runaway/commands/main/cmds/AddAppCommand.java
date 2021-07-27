@@ -1,5 +1,6 @@
 package org.runaway.commands.main.cmds;
 
+import org.runaway.commands.main.MainCommand;
 import org.runaway.commands.service.ServiceCommand;
 import org.runaway.database.UtilsDB;
 import org.runaway.utils.Icon;
@@ -12,7 +13,7 @@ import org.telegram.telegrambots.meta.bots.AbsSender;
 
 import java.util.List;
 
-public class AddAppCommand extends ServiceCommand {
+public class AddAppCommand extends MainCommand {
     private Logger logger = LoggerFactory.getLogger(AddAppCommand.class.getName());
 
     public AddAppCommand(String identifier, String description) {
@@ -43,13 +44,13 @@ public class AddAppCommand extends ServiceCommand {
                 sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение...");
             }
         } else {
-            sb.append("❗Где взять SteamID?\n")
-                    .append(Icon.ONE.get()).append(" Сайт <a href=https://store.steampowered.com/>Steam</a>\n")
-                    .append(Icon.TWO.get()).append(" Сайт <a href=https://steamdb.info/>SteamDB</a> (")
-                    .append(Icon.CHECK.get()).append(" <b>рекомендую</b>\n\n)")
-                    .append("Используйте только так:\n/add <SteamID> - добавить игру из Steam");
+            sb.append("Где взять SteamID?\n")
+                    .append(Icon.ONE.get()).append(" Сайт <a href=\"https://store.steampowered.com/\">Steam</a>\n")
+                    .append(Icon.TWO.get()).append(" Сайт <a href=\"https://steamdb.info/\">SteamDB</a> (")
+                    .append(Icon.CHECK.get()).append(" <b>рекомендую</b>)\n\n")
+                    .append("❗Используйте так:\n/add [SteamID] - добавить игру из Steam");
         }
-        sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null);
+        sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
 
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));

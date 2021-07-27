@@ -3,6 +3,7 @@ package org.runaway.commands.main.cmds;
 import org.runaway.commands.main.MainCommand;
 import org.runaway.database.MongoDB;
 import org.runaway.database.UtilsDB;
+import org.runaway.utils.Icon;
 import org.runaway.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,14 +33,14 @@ public class ListCommand extends MainCommand {
         AtomicInteger i = new AtomicInteger(1);
         List<Integer> appids = UtilsDB.getUserApps(user.getId());
         if (appids != null && !appids.isEmpty()) {
-            sb.append("Игры, за которыми вы следите\n\n");
+            sb.append(Icon.MINUS.get()).append(" Игры, за которыми вы следите\n\n");
             appids.forEach(in -> {
                 UtilsDB.checkSteamID(in);
                 sb.append(i.getAndIncrement()).append(". ").append(UtilsDB.getValue(MongoDB.getAppIdsCollection(), in).first().get("name")).append(" (<b>")
                         .append(in).append("</b>)\n");
             });
         } else {
-            sb.append("❗ Добавьте, пожалуйста, SteamID игр, за которыми хотите следить!");
+            sb.append("❗Добавьте, пожалуйста, SteamID игр, за которыми хотите следить!");
         }
         sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName,  sb.toString(), null, false);
 

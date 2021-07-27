@@ -47,7 +47,7 @@ public class PricesCommand extends MainCommand {
                     App app = UtilsDB.toApp(i);
                     Date update = app.getPrice().getLastUpdate();
                     long milliseconds = new Date().getTime() - update.getTime();
-                    if (milliseconds > 300000) {
+                    if (milliseconds > 900000) {
                         app = UtilsDB.updatePrice(app);
                     }
                     sb.append(in.getAndIncrement()).append(". <a href=\"").append("https://store.steampowered.com/app/")

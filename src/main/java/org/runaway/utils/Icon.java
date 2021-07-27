@@ -8,7 +8,8 @@ public enum Icon {
     NOT(":x:"),
     UPDATE(":arrows_counterclockwise:"),
     ONE(":one:"),
-    TWO(":two:");
+    TWO(":two:"),
+    BELL(":bell:");
 
     private String value;
 
