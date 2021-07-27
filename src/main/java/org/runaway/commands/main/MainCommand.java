@@ -36,7 +36,7 @@ public abstract class MainCommand extends BotCommand {
     }
 
     public static String messageFormat(String text, boolean header) {
-        return header ? Icon.UPDATE.get() + " Скидки на выбранные игры Steam (на " + Vars.getDateFormatBeautiful().format(addHoursToJavaUtilDate(new Date(), 3)) + ")\n\n" + text : text;
+        return header ? Icon.UPDATE.get() + " Скидки на выбранные игры Steam (на " + Vars.getDateFormatBeautiful().format(addHoursToJavaUtilDate(new Date(), 3)) + " по МСК)\n\n" + text : text;
     }
 
     public static Date addHoursToJavaUtilDate(Date date, int hours) {
