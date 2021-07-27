@@ -48,10 +48,7 @@ public class PricesCommand extends MainCommand {
                 for (Integer id : apps) {
                     Thread thread = new Thread(new SteamRunnable(id));
                     thread.start();
-                    threads.add(thread);
                 }
-                Thread.sleep(1000);
-                threads.forEach(Thread::interrupt);
                 apps.forEach(i -> {
                     App app = UtilsDB.toApp(i);
                     boolean hasDisc = app.getPrice().isSale();

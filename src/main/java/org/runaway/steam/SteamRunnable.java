@@ -23,5 +23,6 @@ public class SteamRunnable extends Thread {
         if (milliseconds > 30000) {
             this.newApp = UtilsDB.updatePrice(app);
         }
+        interrupt();
     }
 }
