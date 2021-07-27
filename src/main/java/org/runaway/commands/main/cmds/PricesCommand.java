@@ -50,16 +50,22 @@ public class PricesCommand extends MainCommand {
                     if (milliseconds > 900000) {
                         app = UtilsDB.updatePrice(app);
                     }
-                    sb.append(Icon.getNumberString(in.getAndIncrement())).append(" <a href=\"").append("https://store.steampowered.com/app/")
-                            .append(i).append("/\">").append(app.getName()).append("</a> ");
-                    if (app.getAppType() == AppType.PREORDER || app.getAppType() == AppType.NOINFO) {
-                        sb.append(app.getPrice().getFinal_price() > 0 ? "(" + app.getPrice().getFinal_price() + " руб.) " + (app.getPrice().getDiscount() > 0 ? Icon.CHECK.get() : Icon.NOT.get()) : Icon.NOT.get()).append("\n    <b>Предзаказ - <i>").append(app.getReleaseDate()).append("</i>")
-                                .append(app.getPrice().getDiscount() > 0 ? " (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>\n" : "</b>\n");
-                    } else {
-                        sb.append("(").append(app.getPrice().getInitial_price()).append(" руб.)")
-                                .append(app.getPrice().getDiscount() > 0 ? (" " + Icon.CHECK.get() + "\n    <b>Сейчас - <i>" + app.getPrice().getFormated_price() +
-                                        "</i> (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>") : " " + Icon.NOT.get()).append("\n");
-                    }
+                    boolean hasDisc = app.getPrice().getDiscount() > 0;
+                    sb.append(hasDisc ? Icon.CHECK.get() : Icon.NOT.get()).append(" <a href=\"").append("https://store.steampowered.com/app/")
+                            .append(i).append("/\">").append(app.getName()).append("</a> ")
+                            .append(app.getPrice().getInitial_price() > 0 ? "(" + app.getPrice().getInitial_price() + " руб.) " : "")
+                            .append("\n     <b>Предзаказ - ").append("<i>").append(app.getReleaseDate()).append("</i>)")
+                            .append(hasDisc ? "\n     Сейчас - " + app.getPrice().getFormated_price() +
+                                    " (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>\n" : "</b>\n");
+//                    if (app.getAppType() == AppType.PREORDER || app.getAppType() == AppType.NOINFO) {
+//                        sb.append(app.getPrice().getInitial_price() > 0 ? "(" + app.getPrice().getInitial_price() + " руб.) " : "")
+//                                .append("\n     <b>Предзаказ - ").append("<i>").append(app.getReleaseDate()).append("</i>)")
+//                                .append(hasDisc ? "\n     <b>Сейчас - " + app.getPrice().getFormated_price() + " (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>\n" : "</b>\n");
+//                    } else {
+//                        sb.append("(").append(app.getPrice().getInitial_price()).append(" руб.)")
+//                                .append(app.getPrice().getDiscount() > 0 ? (" " + Icon.CHECK.get() + "\n    <b>Сейчас - <i>" + app.getPrice().getFormated_price() +
+//                                        "</i> (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>") : " " + Icon.NOT.get()).append("\n");
+//                    }
                 });
             } catch (Exception e) {
                 e.printStackTrace();

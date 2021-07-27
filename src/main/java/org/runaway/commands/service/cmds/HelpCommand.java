@@ -29,7 +29,7 @@ public class HelpCommand extends ServiceCommand {
                         "/list - просмотреть выбранные игры\n" +
                         "/add [SteamID] - добавить игру из Steam\n" +
                         "/remove - удалить игру из списка\n\n" +
-                        Icon.BELL.get() + " Если вы добавили неверный SteamID и бот сломался, удалите игру вручную\n" +
+                        Icon.BELL.get() + " Если вы добавили неверный SteamID и бот сломался, удалите игру вручную.\n" +
                         "❗Используйте так:\n<b>/remove [SteamID]</b> - удалить SteamID из списка", null);
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
