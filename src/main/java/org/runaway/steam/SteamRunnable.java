@@ -23,6 +23,11 @@ public class SteamRunnable implements Runnable {
         if (milliseconds > 900000) {
             this.newApp = UtilsDB.updatePrice(app);
         }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public App getNewApp() {

@@ -44,8 +44,8 @@ public class PricesCommand extends MainCommand {
         if (apps != null) {
             try {
                 for (Integer id : apps) {
-                    SteamRunnable steamRunnable = new SteamRunnable(id);
-                    new Thread(steamRunnable).start();
+                    Thread thread = new Thread(new SteamRunnable(id));
+                    thread.start();
                 }
                 apps.forEach(i -> {
                     App app = UtilsDB.toApp(i);
