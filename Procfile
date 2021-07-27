@@ -1,1 +1,1 @@
-web: target/bin/workerBot java $JAVA_OPTS -Dserver.port=$PORT
+web: java $JAVA_OPTS -Dserver.port=$PORT org.runaway.Bot
