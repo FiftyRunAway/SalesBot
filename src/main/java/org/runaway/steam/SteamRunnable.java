@@ -5,7 +5,7 @@ import org.runaway.database.UtilsDB;
 
 import java.util.Date;
 
-public class SteamRunnable implements Runnable {
+public class SteamRunnable extends Thread {
 
     private int steamId;
     private App newApp;
@@ -24,13 +24,9 @@ public class SteamRunnable implements Runnable {
             this.newApp = UtilsDB.updatePrice(app);
         }
         try {
-            Thread.sleep(1500);
+            sleep(350);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public App getNewApp() {
-        return newApp;
     }
 }
