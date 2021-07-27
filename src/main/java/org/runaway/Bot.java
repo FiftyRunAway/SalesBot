@@ -25,7 +25,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Bot extends TelegramLongPollingCommandBot {
-    private static Logger logger = LoggerFactory.getLogger(Bot.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(Bot.class.getName());
     public static MongoDB mongoDB;
 
     public static void main(String[] args) {
