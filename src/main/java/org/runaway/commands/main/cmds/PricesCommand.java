@@ -50,22 +50,13 @@ public class PricesCommand extends MainCommand {
                     if (milliseconds > 900000) {
                         app = UtilsDB.updatePrice(app);
                     }
-                    boolean hasDisc = app.getPrice().getDiscount() > 0;
+                    boolean hasDisc = app.getPrice().isSale();
                     sb.append(hasDisc ? Icon.CHECK.get() : Icon.NOT.get()).append(" <a href=\"").append("https://store.steampowered.com/app/")
                             .append(i).append("/\">").append(app.getName()).append("</a> ")
                             .append(app.getPrice().getInitial_price() > 0 ? "(" + app.getPrice().getInitial_price() + " руб.) " : "")
-                            .append("\n     <b>Предзаказ - ").append("<i>").append(app.getReleaseDate()).append("</i>)")
-                            .append(hasDisc ? "\n     Сейчас - " + app.getPrice().getFormated_price() +
-                                    " (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>\n" : "</b>\n");
-//                    if (app.getAppType() == AppType.PREORDER || app.getAppType() == AppType.NOINFO) {
-//                        sb.append(app.getPrice().getInitial_price() > 0 ? "(" + app.getPrice().getInitial_price() + " руб.) " : "")
-//                                .append("\n     <b>Предзаказ - ").append("<i>").append(app.getReleaseDate()).append("</i>)")
-//                                .append(hasDisc ? "\n     <b>Сейчас - " + app.getPrice().getFormated_price() + " (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>\n" : "</b>\n");
-//                    } else {
-//                        sb.append("(").append(app.getPrice().getInitial_price()).append(" руб.)")
-//                                .append(app.getPrice().getDiscount() > 0 ? (" " + Icon.CHECK.get() + "\n    <b>Сейчас - <i>" + app.getPrice().getFormated_price() +
-//                                        "</i> (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>") : " " + Icon.NOT.get()).append("\n");
-//                    }
+                            .append(app.getPrice().isPreorder() ? "\n     <b>Предзаказ - <i>" + app.getReleaseDate() + "</i></b>" : "")
+                            .append(hasDisc ? "\n     <b>Сейчас - " + app.getPrice().getFormated_price() +
+                                    " (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>" : "").append("\n");
                 });
             } catch (Exception e) {
                 e.printStackTrace();
