@@ -29,7 +29,7 @@ public class Utils {
         return l;
     }
 
-    public static Date stringToDate(SimpleDateFormat format, String string) {
+    public static synchronized Date stringToDate(SimpleDateFormat format, String string) {
         try {
             return format.parse(string);
         } catch (Exception e) {
