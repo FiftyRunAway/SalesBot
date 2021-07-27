@@ -45,11 +45,11 @@ public class RemoveAppCommand extends MainCommand {
                 List<Integer> s = UtilsDB.getUserApps(chatId);
                 if (s != null && !s.isEmpty()) {
                     keyboardMarkup = Keyboards.getRemoveKeyboard(user.getId());
-                    sb.append("Выберите те игры, которые хотите удалить");
+                    sb.append("Выберите те игры, которые хотите удалить\n\n❗Если вы не видите название нужной игры, тогда лучше удалить SteamID вручную!\n");
                 } else {
-                    sb.append("❗Так не выйдет! Сначала добавьте игру\n")
-                    .append("Используйте так:\n/add [SteamID] - добавить игру из Steam");
+                    sb.append("❗Так не выйдет! Сначала добавьте игру\n");
                 }
+                sb.append("Используйте так:\n/add [SteamID] - добавить игру из Steam");
             }
             sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), keyboardMarkup, false);
         } catch (Exception e) {

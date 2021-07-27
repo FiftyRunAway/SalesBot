@@ -89,14 +89,14 @@ public class UtilsDB {
      *
      * @param steamId игры, которая будет занесена в MongoDB
      */
-    public static boolean saveSteamID(int steamId) {
+    public static App saveSteamID(int steamId) {
         if (!isAppInBase(steamId)) {
             App app = Steam.getApp(steamId);
             MongoDB.getAppIdsCollection().insertOne(appDoc(app));
             logger.debug(String.format("Сохранена новый Steam ID в DB: %s", steamId));
-            return true;
+            return app;
         }
-        return false;
+        return null;
     }
 
     /**
@@ -105,6 +105,8 @@ public class UtilsDB {
      * @return App с данными из MongoDB
      */
     public static App toApp(int steamId) {
+        App check = saveSteamID(steamId);
+        if (check != null) return check;
         Document d = getValue(MongoDB.getAppIdsCollection(), steamId).first();
 
         String name = d.get("name").toString();
