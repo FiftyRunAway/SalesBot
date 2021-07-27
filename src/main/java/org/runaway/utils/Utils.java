@@ -33,7 +33,7 @@ public class Utils {
         try {
             return format.parse(string);
         } catch (ParseException e) {
-            e.printStackTrace();
+            System.err.println("Problem str: " + string);
         }
         return new Date();
     }
