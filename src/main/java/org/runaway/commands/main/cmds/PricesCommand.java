@@ -54,7 +54,7 @@ public class PricesCommand extends MainCommand {
                     sb.append(hasDisc ? Icon.CHECK.get() : Icon.NOT.get()).append(" <a href=\"").append("https://store.steampowered.com/app/")
                             .append(i).append("/\">").append(app.getName()).append("</a> ")
                             .append(app.getPrice().getInitial_price() > 0 ? "(" + app.getPrice().getInitial_price() + " руб.) " : "")
-                            .append(app.getPrice().isPreorder() ? "\n     <b>Предзаказ - <i>" + app.getReleaseDate() + "</i></b>" : "")
+                            .append(!app.getPrice().isPreorder() ? "\n     <b>Предзаказ - <i>" + app.getReleaseDate() + "</i></b>" : "")
                             .append(hasDisc ? "\n     <b>Сейчас - " + app.getPrice().getFormated_price() +
                                     " (<i>-" + (int) app.getPrice().getDiscount() + "%</i>)</b>" : "").append("\n");
                 });
