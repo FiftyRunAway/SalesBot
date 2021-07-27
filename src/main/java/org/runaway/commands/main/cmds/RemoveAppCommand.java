@@ -49,7 +49,7 @@ public class RemoveAppCommand extends MainCommand {
                 } else {
                     sb.append("❗Так не выйдет! Сначала добавьте игру\n");
                 }
-                sb.append("Используйте так:\n/add [SteamID] - добавить игру из Steam");
+                sb.append("Используйте так:\n/remove [SteamID] - удалить SteamID из списка");
             }
             sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), keyboardMarkup, false);
         } catch (Exception e) {

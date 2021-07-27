@@ -82,7 +82,18 @@ public class UtilsDB {
                 return true;
             }
         }
+        // Удаление из общего списка SteamID (чтобы не забивать бесплатную память MongoDB)
+        removeSteamID(steamId);
         return false;
+    }
+
+    /**
+     * Удалить SteamID из appids коллекции
+     */
+    private static void removeSteamID(int steamId) {
+        if (docExists(MongoDB.getAppIdsCollection(), steamId)) {
+            MongoDB.getAppIdsCollection().deleteOne(new BasicDBObject("id", steamId));
+        }
     }
 
     /**
