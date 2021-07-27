@@ -35,8 +35,8 @@ public class RemoveAppCommand extends MainCommand {
                 try {
                     int id = Integer.parseInt(strings[0]);
                     if (UtilsDB.removeFromUser(user.getId(), id)) {
-                        sb.append(Icon.CHECK.get()).append(" Игра со SteamID '").append(id)
-                                .append("' успешно удалена!\nОбновите список игр");
+                        sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(id)
+                                .append("</b>' успешно удалена!\nОбновите список игр");
                     } else sb.append(Icon.NOT.get()).append(" Игра с таким SteamID не может быть удалена!");
                 } catch (NumberFormatException exception) {
                     sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение!");

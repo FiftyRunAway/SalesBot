@@ -33,7 +33,7 @@ public class StartCommand extends ServiceCommand {
                         "в Steam! Просто нажмите кнопку '/add' внизу, " +
                         "чтобы начать добавление SteamID. Другие команды можно посмотреть в '/help'\n\n" +
                         Icon.BELL.get() + "Важная информация: \n" +
-                        Icon.ONE.get() + " Если вы добавили неверный SteamID и бот сломался, удалите SteamID вручную\n" +
+                        Icon.ONE.get() + " Если вы добавили неверный SteamID и бот сломался, удалите SteamID вручную.\n" +
                         "❗Используйте так:\n<b>/remove [SteamID]</b> - удалить SteamID из списка", Keyboards.getMainKeyboard());
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));

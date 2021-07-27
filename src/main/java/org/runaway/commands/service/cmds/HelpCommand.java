@@ -24,9 +24,9 @@ public class HelpCommand extends ServiceCommand {
                 this.getCommandIdentifier()));
         sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
                 "❗<b>Список команд</b>\n" +
-                        "/help - помощь\n" +
+                        "/help - помощь в командах\n" +
                         "/prices - просмотреть актуальные цены\n" +
-                        "/list - просмотреть текущие игры\n" +
+                        "/list - просмотреть выбранные игры\n" +
                         "/add [SteamID] - добавить игру из Steam\n" +
                         "/remove - удалить игру из списка\n\n" +
                         Icon.BELL.get() + " Если вы добавили неверный SteamID и бот сломался, удалите игру вручную\n" +
