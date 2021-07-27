@@ -38,7 +38,7 @@ public class AddAppCommand extends MainCommand {
                 } else if (l == null || !l.contains(id)) {
                     UtilsDB.addToUser(user.getId(), id);
                     UtilsDB.saveSteamID(id);
-                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(id).append("</b>' успешно добавлена!\nОбновите список игр");
+                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(id).append("</b>' успешно добавлена!\n\n" + Icon.UPDATE + " Обновите список игр");
                 }
             } catch (NumberFormatException e) {
                 sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение...");

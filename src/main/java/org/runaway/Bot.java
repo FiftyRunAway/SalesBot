@@ -107,12 +107,13 @@ public class Bot extends TelegramLongPollingCommandBot {
 
                 StringBuilder sb = new StringBuilder();
                 if (UtilsDB.removeFromUser(user_id, app_id)) {
-                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID \"").append(app_id).append("\" успешно удалена!\nОбновите список игр");
+                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(app_id).append("</b>' успешно удалена!\n\n" + Icon.UPDATE + " Обновите список игр");
                 } else {
-                    sb.append("❗ Игра с таким SteamID не может быть удалена!");
+                    sb.append("❗Игра с таким SteamID не может быть удалена!");
                 }
                 SendMessage sendMessage = new SendMessage();
                 sendMessage.setChatId(String.valueOf(user_id));
+                sendMessage.enableHtml(true);
                 sendMessage.setText(sb.toString());
                 sendMessage.disableWebPagePreview();
                 try {
