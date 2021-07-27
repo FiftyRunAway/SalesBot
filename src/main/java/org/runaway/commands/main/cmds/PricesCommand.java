@@ -14,6 +14,7 @@ import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -43,10 +44,14 @@ public class PricesCommand extends MainCommand {
         StringBuilder sb = new StringBuilder();
         if (apps != null) {
             try {
+                List<Thread> threads = new ArrayList<>();
                 for (Integer id : apps) {
                     Thread thread = new Thread(new SteamRunnable(id));
                     thread.start();
+                    threads.add(thread);
                 }
+                Thread.sleep(1000);
+                threads.forEach(Thread::interrupt);
                 apps.forEach(i -> {
                     App app = UtilsDB.toApp(i);
                     boolean hasDisc = app.getPrice().isSale();
