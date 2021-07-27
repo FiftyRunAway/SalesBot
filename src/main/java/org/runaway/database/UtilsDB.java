@@ -136,7 +136,6 @@ public class UtilsDB {
         double discount = Double.parseDouble(d.get("discount").toString());
         double initial_price = Double.parseDouble(d.get("initial_price").toString());
         double final_price = Double.parseDouble(d.get("final_price").toString());
-        System.out.println(d.get("last_update"));
         Date last_update = Utils.stringToDate(Vars.getDateFormat(), d.get("last_update").toString());
 
         Price price = new Price(type == AppType.GAME, formated_price, discount, initial_price, final_price, last_update);

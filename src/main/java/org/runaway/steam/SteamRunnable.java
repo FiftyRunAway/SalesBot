@@ -20,7 +20,7 @@ public class SteamRunnable extends Thread {
         App app = UtilsDB.toApp(this.steamId);
         Date update = app.getPrice().getLastUpdate();
         long milliseconds = new Date().getTime() - update.getTime();
-        if (milliseconds > 30000) {
+        if (milliseconds > 900000) {
             this.newApp = UtilsDB.updatePrice(app);
         }
         interrupt();
