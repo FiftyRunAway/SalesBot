@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT target/bin/workerBot
+web: target/bin/workerBot java $JAVA_OPTS -Dserver.port=$PORT
