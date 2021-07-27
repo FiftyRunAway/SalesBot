@@ -3,6 +3,7 @@ package org.runaway.commands.main.cmds;
 import org.runaway.commands.main.MainCommand;
 import org.runaway.constructors.App;
 import org.runaway.database.UtilsDB;
+import org.runaway.steam.SteamRunnable;
 import org.runaway.utils.AppType;
 import org.runaway.utils.Icon;
 import org.runaway.utils.Keyboards;
@@ -40,16 +41,14 @@ public class PricesCommand extends MainCommand {
     public static String getText(long user_id) {
         List<Integer> apps = UtilsDB.getUserApps(user_id);
         StringBuilder sb = new StringBuilder();
-        AtomicInteger in = new AtomicInteger(1);
         if (apps != null) {
             try {
+                for (Integer id : apps) {
+                    SteamRunnable steamRunnable = new SteamRunnable(id);
+                    new Thread(steamRunnable).start();
+                }
                 apps.forEach(i -> {
                     App app = UtilsDB.toApp(i);
-                    Date update = app.getPrice().getLastUpdate();
-                    long milliseconds = new Date().getTime() - update.getTime();
-                    if (milliseconds > 900000) {
-                        app = UtilsDB.updatePrice(app);
-                    }
                     boolean hasDisc = app.getPrice().isSale();
                     sb.append(hasDisc ? Icon.CHECK.get() : Icon.NOT.get()).append(" <a href=\"").append("https://store.steampowered.com/app/")
                             .append(i).append("/\">").append(app.getName()).append("</a> ")
