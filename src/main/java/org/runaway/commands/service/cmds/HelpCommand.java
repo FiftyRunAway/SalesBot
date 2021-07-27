@@ -23,14 +23,14 @@ public class HelpCommand extends ServiceCommand {
         logger.debug(String.format("Пользователь %s. Начато выполнение команды %s", userName,
                 this.getCommandIdentifier()));
         sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
-                "❗*Список команд*\n" +
+                "❗<b>Список команд</b>\n" +
                         "/help - помощь\n" +
                         "/prices - просмотреть актуальные цены\n" +
                         "/list - просмотреть текущие игры\n" +
                         "/add [SteamID] - добавить игру из Steam\n" +
                         "/remove - удалить игру из списка\n\n" +
                         Icon.BELL.get() + " Если вы добавили неверный SteamID и бот сломался, удалите игру вручную\n" +
-                        "❗Используйте так: /remove [SteamID]", null);
+                        "❗Используйте так:\n<b>/remove [SteamID]</b> - удалить SteamID из списка", null);
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }

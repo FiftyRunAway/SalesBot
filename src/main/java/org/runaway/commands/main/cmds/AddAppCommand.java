@@ -44,11 +44,11 @@ public class AddAppCommand extends MainCommand {
                 sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение...");
             }
         } else {
-            sb.append("Где взять SteamID?\n")
+            sb.append("<b>Где взять SteamID?</b>\n")
                     .append(Icon.ONE.get()).append(" Сайт <a href=\"https://store.steampowered.com/\">Steam</a>\n")
                     .append(Icon.TWO.get()).append(" Сайт <a href=\"https://steamdb.info/\">SteamDB</a> (")
                     .append(Icon.CHECK.get()).append(" <b>рекомендую</b>)\n\n")
-                    .append("❗Используйте так:\n/add [SteamID] - добавить игру из Steam");
+                    .append("❗Используйте так:\n<b>/add [SteamID]</b> - добавить игру из Steam");
         }
         sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
 

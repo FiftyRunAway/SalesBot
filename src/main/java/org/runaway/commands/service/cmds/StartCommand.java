@@ -29,12 +29,12 @@ public class StartCommand extends ServiceCommand {
         String user_last_name = chat.getLastName();
         UtilsDB.registerUser(chat.getId(), userName, user_first_name, user_last_name);
         sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
-                Icon.RAINBOW.get() + " Добро пожаловать, " + user_first_name + "! \n\nВы попали в бота, который следит за скидками игр " +
+                Icon.RAINBOW.get() + " Добро пожаловать, <b>" + user_first_name + "</b>! \n\nВы попали в бота, который следит за скидками игр " +
                         "в Steam! Просто нажмите кнопку '/add' внизу, " +
                         "чтобы начать добавление SteamID. Другие команды можно посмотреть в '/help'\n\n" +
                         Icon.BELL.get() + "Важная информация: \n" +
                         Icon.ONE.get() + " Если вы добавили неверный SteamID и бот сломался, удалите SteamID вручную\n" +
-                        "❗Используйте так: /remove [SteamID]", Keyboards.getMainKeyboard());
+                        "❗Используйте так:\n<b>/remove [SteamID]</b> - удалить SteamID из списка", Keyboards.getMainKeyboard());
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }

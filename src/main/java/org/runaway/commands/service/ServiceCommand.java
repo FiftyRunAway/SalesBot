@@ -17,7 +17,7 @@ public abstract class ServiceCommand extends BotCommand {
 
     protected void sendAnswer(AbsSender absSender, Long chatId, String commandName, String username, String text, ReplyKeyboard keyboard) {
         SendMessage message = new SendMessage();
-        message.enableMarkdown(true);
+        message.enableHtml(true);
         message.setChatId(chatId.toString());
         message.setText(text);
         if (keyboard != null) message.setReplyMarkup(keyboard);
