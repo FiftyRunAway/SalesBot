@@ -32,7 +32,7 @@ public class Utils {
     public static Date stringToDate(SimpleDateFormat format, String string) {
         try {
             return format.parse(string);
-        } catch (ParseException e) {
+        } catch (Exception e) {
             System.out.println("Problem str: " + string);
         }
         return new Date();
