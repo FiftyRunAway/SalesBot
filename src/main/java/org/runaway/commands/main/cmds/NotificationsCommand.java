@@ -36,6 +36,8 @@ public class NotificationsCommand extends MainCommand {
             sb.append("❗Добавьте, пожалуйста, SteamID игр, за которыми хотите следить!");
         }
 
+        sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName,  sb.toString(), null, false);
+
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }
