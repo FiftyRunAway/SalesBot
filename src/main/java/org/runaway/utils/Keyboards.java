@@ -27,6 +27,7 @@ public class Keyboards {
         ArrayList<KeyboardRow> keyboard = new ArrayList<>();
         KeyboardRow firstRow = new KeyboardRow();
         KeyboardRow secondRow = new KeyboardRow();
+        KeyboardRow thirdRow = new KeyboardRow();
 
         firstRow.add(KeyboardButton.builder().text("/prices").build());
         keyboard.add(firstRow);
@@ -35,6 +36,8 @@ public class Keyboards {
         secondRow.add(KeyboardButton.builder().text("/help").build());
         secondRow.add(KeyboardButton.builder().text("/remove").build());
         keyboard.add(secondRow);
+        thirdRow.add(KeyboardButton.builder().text("/notify").build());
+        keyboard.add(thirdRow);
         replyKeyboardMarkup.setResizeKeyboard(true);
         replyKeyboardMarkup.setKeyboard(keyboard);
         return replyKeyboardMarkup;
