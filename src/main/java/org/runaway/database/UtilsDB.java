@@ -1,11 +1,14 @@
 package org.runaway.database;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.Mongo;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.bson.Document;
 import org.runaway.constructors.App;
 import org.runaway.constructors.Price;
+import org.runaway.constructors.User;
 import org.runaway.steam.Steam;
 import org.runaway.utils.AppType;
 import org.runaway.utils.Utils;
@@ -23,19 +26,11 @@ public class UtilsDB {
     /**
      * Заносит данные нового пользователя в MongoDB
      *
-     * @param user_id
-     * @param username
-     * @param firstName
-     * @param lastName
      */
-    public static void registerUser(long user_id, String username, String firstName, String lastName) {
-        if (!docExists(MongoDB.getUsersCollection(), user_id)) {
-            Document doc = new Document("id", user_id)
-                    .append("username", username)
-                    .append("first_name", firstName)
-                    .append("last_name", lastName);
-            MongoDB.getUsersCollection().insertOne(doc);
-            logger.debug(String.format("Пользователь %s. Зарегистрирован в DB users!", username));
+    public static void registerUser(User user) {
+        if (!docExists(MongoDB.getUsersCollection(), user.getUserId())) {
+            MongoDB.getUsersCollection().insertOne(userDoc(user));
+            logger.debug(String.format("Пользователь %s. Зарегистрирован в DB users!", user.getUsername()));
         }
     }
 
@@ -52,11 +47,16 @@ public class UtilsDB {
             if (o != null) {
                 apps.addAll(Utils.stringToList(o.toString()));
             }
+            boolean notifications = Boolean.parseBoolean(getValue(MongoDB.getAppsCollection(), steamId).first()
+                    .get("notifications").toString());
             MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
                     new Document("id", user_id)
-            .append("apps", apps.toString()));
+            .append("apps", apps.toString())
+            .append("notifications", notifications));
         } else {
-            Document doc = new Document("id", user_id).append("apps", apps.toString());
+            Document doc = new Document("id", user_id)
+                    .append("apps", apps.toString())
+                    .append("notifications", false);
             MongoDB.getAppsCollection().insertOne(doc);
         }
     }
@@ -76,9 +76,12 @@ public class UtilsDB {
             }
             if (apps.contains(steamId)) {
                 apps.remove((Object) steamId);
-
+                boolean notifications = Boolean.parseBoolean(getValue(MongoDB.getAppsCollection(), steamId).first()
+                        .get("notifications").toString());
                 MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
-                        new Document("id", user_id).append("apps", apps.isEmpty() ? null : apps.toString()));
+                        new Document("id", user_id)
+                                .append("apps", apps.isEmpty() ? null : apps.toString())
+                                .append("notifications", notifications));
 
                 // Удаление из общего списка SteamID (чтобы не забивать бесплатную память MongoDB)
                 removeSteamID(steamId);
@@ -136,7 +139,7 @@ public class UtilsDB {
         double discount = Double.parseDouble(d.get("discount").toString());
         double initial_price = Double.parseDouble(d.get("initial_price").toString());
         double final_price = Double.parseDouble(d.get("final_price").toString());
-        Date last_update = Utils.stringToDate(Vars.getDateFormat(), d.get("last_update").toString());
+        Date last_update = (Date) Utils.stringToDate(Vars.getDateFormat(), d.get("last_update").toString()).clone();
 
         Price price = new Price(type == AppType.GAME, formated_price, discount, initial_price, final_price, last_update);
 
@@ -163,6 +166,22 @@ public class UtilsDB {
         return null;
     }
 
+    public static boolean switchNotifications(long user_id) {
+        boolean enabled;
+        if (docExists(MongoDB.getAppsCollection(), user_id)) {
+            Document d = getValue(MongoDB.getAppsCollection(), user_id).first();
+            Object o = d.get("notifications");
+            enabled = o != null && Boolean.parseBoolean(o.toString());
+            List<Integer> apps = getUserApps(user_id);
+            MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
+                    new Document("id", user_id)
+            .append("apps", apps == null ? "[]" : apps.toString())
+            .append("notifications", !enabled));
+            return true;
+        }
+        return false;
+    }
+
     /**
      *
      * @param steam_id
@@ -187,6 +206,13 @@ public class UtilsDB {
                 .append("initial_price", app.getPrice().getInitial_price())
                 .append("discount", app.getPrice().getDiscount())
                 .append("last_update", Vars.getDateFormat().format(app.getPrice().getLastUpdate()));
+    }
+
+    private static Document userDoc(User user) {
+        return new Document("id", user.getUserId())
+                .append("username", user.getUsername())
+                .append("first_name", user.getFirstName())
+                .append("last_name", user.getLastName());
     }
 
     /**

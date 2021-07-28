@@ -27,7 +27,8 @@ public class StartCommand extends ServiceCommand {
 
         String user_first_name = chat.getFirstName();
         String user_last_name = chat.getLastName();
-        UtilsDB.registerUser(chat.getId(), userName, user_first_name, user_last_name);
+        org.runaway.constructors.User u = new org.runaway.constructors.User(chat.getId(), userName, user_first_name, user_last_name);
+        UtilsDB.registerUser(u);
         sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
                 Icon.RAINBOW.get() + " Добро пожаловать, <b>" + user_first_name + "</b>! \n\nВы попали в бота, который следит за скидками игр " +
                         "в Steam! Просто нажмите кнопку '/add' внизу, " +

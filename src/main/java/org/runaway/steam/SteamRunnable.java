@@ -4,6 +4,7 @@ import org.runaway.constructors.App;
 import org.runaway.database.UtilsDB;
 
 import java.util.Date;
+import java.util.List;
 
 public class SteamRunnable extends Thread {
 
@@ -24,7 +25,14 @@ public class SteamRunnable extends Thread {
             }
             interrupt();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void updateAll(List<Integer> apps) {
+        for (Integer id : apps) {
+            Thread thread = new Thread(new SteamRunnable(id));
+            thread.start();
         }
     }
 }

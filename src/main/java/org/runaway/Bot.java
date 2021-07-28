@@ -1,10 +1,7 @@
 package org.runaway;
 
 import org.runaway.commands.main.MainCommand;
-import org.runaway.commands.main.cmds.AddAppCommand;
-import org.runaway.commands.main.cmds.ListCommand;
-import org.runaway.commands.main.cmds.PricesCommand;
-import org.runaway.commands.main.cmds.RemoveAppCommand;
+import org.runaway.commands.main.cmds.*;
 import org.runaway.commands.service.cmds.HelpCommand;
 import org.runaway.commands.service.cmds.StartCommand;
 import org.runaway.database.MongoDB;
@@ -51,6 +48,7 @@ public class Bot extends TelegramLongPollingCommandBot {
         register(new AddAppCommand("add", "Добавить Steam ID в список"));
         register(new RemoveAppCommand("remove", "Удалить Steam ID из списка"));
         register(new PricesCommand("prices", "Показать актуальные цены"));
+        register(new NotificationsCommand("notify", "Включить/отключить уведосления"));
 
         registerDefaultAction((absSender, message) -> {
             SendMessage commandUnknownMessage = new SendMessage();

@@ -26,6 +26,7 @@ public class HelpCommand extends ServiceCommand {
                 "❗<b>Список команд</b>\n" +
                         "/help - помощь в командах\n" +
                         "/prices - просмотреть актуальные цены\n" +
+                        "/notify - включить/отключить уведомления\n" +
                         "/list - просмотреть выбранные игры\n" +
                         "/add [SteamID] - добавить игру из Steam\n" +
                         "/remove - удалить игру из списка\n\n" +

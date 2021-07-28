@@ -3,6 +3,7 @@ package org.runaway.commands.main.cmds;
 import org.runaway.commands.main.MainCommand;
 import org.runaway.constructors.App;
 import org.runaway.database.UtilsDB;
+import org.runaway.steam.Steam;
 import org.runaway.steam.SteamRunnable;
 import org.runaway.utils.AppType;
 import org.runaway.utils.Icon;
@@ -44,10 +45,7 @@ public class PricesCommand extends MainCommand {
         StringBuilder sb = new StringBuilder();
         if (apps != null) {
             try {
-                for (Integer id : apps) {
-                    Thread thread = new Thread(new SteamRunnable(id));
-                    thread.start();
-                }
+                SteamRunnable.updateAll(apps);
                 apps.forEach(i -> {
                     App app = UtilsDB.toApp(i);
                     boolean hasDisc = app.getPrice().isSale();
