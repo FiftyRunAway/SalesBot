@@ -26,9 +26,11 @@ public class SteamRunnable extends Thread {
             getOldApps().put(app.getSteamId(), app);
             Date update = app.getPrice().getLastUpdate();
             long milliseconds = new Date().getTime() - update.getTime();
-            if (milliseconds > 1000) { //900000 минимум
+            if (milliseconds > 900000) { //900000 минимум
                 App newApp = UtilsDB.updatePrice(app);
                 getNewApps().put(this.steamId, newApp);
+            } else {
+                getNewApps().put(this.steamId, app);
             }
             interrupt();
         } catch (Exception e) {
