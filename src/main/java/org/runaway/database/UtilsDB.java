@@ -1,10 +1,8 @@
 package org.runaway.database;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.Mongo;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.bson.Document;
 import org.runaway.constructors.App;
 import org.runaway.constructors.Price;
@@ -47,8 +45,8 @@ public class UtilsDB {
             if (o != null) {
                 apps.addAll(Utils.stringToList(o.toString()));
             }
-            boolean notifications = Boolean.parseBoolean(getValue(MongoDB.getAppsCollection(), steamId).first()
-                    .get("notifications").toString());
+            boolean notifications = (Boolean) getValue(MongoDB.getAppsCollection(), user_id).first()
+                    .get("notifications");
             MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
                     new Document("id", user_id)
             .append("apps", apps.toString())
@@ -76,8 +74,8 @@ public class UtilsDB {
             }
             if (apps.contains(steamId)) {
                 apps.remove((Object) steamId);
-                boolean notifications = Boolean.parseBoolean(getValue(MongoDB.getAppsCollection(), steamId).first()
-                        .get("notifications").toString());
+                boolean notifications = (Boolean) getValue(MongoDB.getAppsCollection(), user_id).first()
+                        .get("notifications");
                 MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
                         new Document("id", user_id)
                                 .append("apps", apps.isEmpty() ? null : apps.toString())
@@ -164,6 +162,10 @@ public class UtilsDB {
             return newApp;
         }
         return null;
+    }
+
+    public static boolean notifEnabled(long user_id) {
+        return (Boolean) getValue(MongoDB.getAppsCollection(), user_id).first().get("notifications");
     }
 
     public static boolean switchNotifications(long user_id) {

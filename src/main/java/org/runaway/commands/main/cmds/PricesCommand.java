@@ -45,7 +45,7 @@ public class PricesCommand extends MainCommand {
         StringBuilder sb = new StringBuilder();
         if (apps != null) {
             try {
-                SteamRunnable.updateAll(apps);
+                new SteamRunnable().updateAll(apps);
                 apps.forEach(i -> {
                     App app = UtilsDB.toApp(i);
                     boolean hasDisc = app.getPrice().isSale();

@@ -6,6 +6,7 @@ import org.runaway.commands.service.cmds.HelpCommand;
 import org.runaway.commands.service.cmds.StartCommand;
 import org.runaway.database.MongoDB;
 import org.runaway.database.UtilsDB;
+import org.runaway.steam.Notifications;
 import org.runaway.utils.Icon;
 import org.runaway.utils.Keyboards;
 import org.runaway.utils.Vars;
@@ -21,6 +22,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Bot extends TelegramLongPollingCommandBot {
     private static final Logger logger = LoggerFactory.getLogger(Bot.class.getName());
     public static MongoDB mongoDB;
@@ -28,6 +32,19 @@ public class Bot extends TelegramLongPollingCommandBot {
     public static void main(String[] args) {
         //Подключение к ДБ
         mongoDB = new MongoDB();
+
+        //Подключить уведомления для пользователей
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    Notifications.start();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 3600000);
 
         //Регистрация телеграм бота
         try {
@@ -105,7 +122,7 @@ public class Bot extends TelegramLongPollingCommandBot {
 
                 StringBuilder sb = new StringBuilder();
                 if (UtilsDB.removeFromUser(user_id, app_id)) {
-                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(app_id).append("</b>' успешно удалена!\n\n" + Icon.UPDATE.get() + " Обновите список игр");
+                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(app_id).append("</b>' успешно удалена!\n\n").append(Icon.UPDATE.get()).append(" Обновите список игр");
                 } else {
                     sb.append("❗Игра с таким SteamID не может быть удалена!");
                 }

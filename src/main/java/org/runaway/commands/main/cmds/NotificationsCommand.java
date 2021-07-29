@@ -28,8 +28,8 @@ public class NotificationsCommand extends MainCommand {
         Long chatId = chat.getId();
         StringBuilder sb = new StringBuilder();
         if (UtilsDB.switchNotifications(chatId)) {
-            boolean enabled = Boolean.parseBoolean(UtilsDB.getValue(MongoDB.getAppsCollection(), chatId).first()
-                    .get("notifications").toString());
+            boolean enabled = (Boolean) UtilsDB.getValue(MongoDB.getAppsCollection(), chatId).first()
+                    .get("notifications");
             sb.append(Icon.CHECK.get()).append(" Уведомления о скидках на отслеживаемые игры <b>")
                     .append(enabled ? "включены" : "отключены").append("</b>!");
         } else {
