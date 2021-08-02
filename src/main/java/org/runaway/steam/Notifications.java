@@ -46,7 +46,7 @@ public class Notifications {
                         App oldA = oldApps.get(integer);
                         App newA = newApps.get(integer);
 
-                        if (oldA.getPrice().getDiscount() > newA.getPrice().getDiscount()) {
+                        if (oldA.getPrice().getDiscount() < newA.getPrice().getDiscount()) {
                             String old = oldA.getPrice().getFormated_price();
                             sb.append(Icon.getNumberString(atomicInteger.getAndIncrement())).append(" ")
                                     .append(oldA.getName()).append(" ")
