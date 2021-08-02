@@ -50,7 +50,7 @@ public class Notifications {
                             String old = oldA.getPrice().getFormated_price();
                             sb.append(Icon.getNumberString(atomicInteger.getAndIncrement())).append(" ")
                                     .append(oldA.getName()).append(" ")
-                                    .append(old == null ? "Предзаказ" : old).append(" > ")
+                                    .append(old == null ? "Предзаказ" : old).append(" ").append(Icon.RIGHT_ARROW.get()).append(" ")
                                     .append(newA.getPrice().getFormated_price()).append("\n");
                             hasSales = true;
                         }
