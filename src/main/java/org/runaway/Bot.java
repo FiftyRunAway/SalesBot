@@ -122,7 +122,8 @@ public class Bot extends TelegramLongPollingCommandBot {
 
                 StringBuilder sb = new StringBuilder();
                 if (UtilsDB.removeFromUser(user_id, app_id)) {
-                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(app_id).append("</b>' успешно удалена!\n\n").append(Icon.UPDATE.get()).append(" Обновите список игр");
+                    sb.append(Icon.GAMEPAD.get()).append(" Игра со SteamID '<b>").append(app_id).append("</b>' успешно удалена!\n\n")
+                            .append(Icon.UPDATE.get()).append(" Обновите список игр");
                 } else {
                     sb.append("❗Игра с таким SteamID не может быть удалена!");
                 }
