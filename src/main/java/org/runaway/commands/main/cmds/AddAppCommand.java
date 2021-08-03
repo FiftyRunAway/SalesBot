@@ -2,6 +2,7 @@ package org.runaway.commands.main.cmds;
 
 import org.runaway.commands.main.MainCommand;
 import org.runaway.commands.service.ServiceCommand;
+import org.runaway.constructors.App;
 import org.runaway.database.UtilsDB;
 import org.runaway.utils.Icon;
 import org.runaway.utils.Utils;
@@ -37,8 +38,9 @@ public class AddAppCommand extends MainCommand {
                     sb.append(Icon.NOT.get()).append(" Такой SteamID уже добавлен...");
                 } else if (l == null || !l.contains(id)) {
                     UtilsDB.addToUser(user.getId(), id);
-                    UtilsDB.saveSteamID(id);
-                    sb.append(Icon.CHECK.get()).append(" Игра со SteamID '<b>").append(id).append("</b>' успешно добавлена!\n\n" + Icon.UPDATE.get() + " Обновите список игр");
+                    App newApp = UtilsDB.saveSteamID(id);
+                    sb.append(Icon.GAMEPAD.get()).append(" Игра <b>").append(newApp.getName()).append("</b> успешно добавлена!\n\n")
+                            .append(Icon.UPDATE.get()).append(" Обновите список игр");
                 }
             } catch (NumberFormatException e) {
                 sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение...");

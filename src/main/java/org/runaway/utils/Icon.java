@@ -19,7 +19,8 @@ public enum Icon {
     NINE(":nine:"),
     BELL(":bell:"),
     RAINBOW(":rainbow:"),
-    RIGHT_ARROW(":arrow_forward:");
+    RIGHT_ARROW(":arrow_forward:"),
+    GAMEPAD(":video_game:");
 
     private String value;
 
