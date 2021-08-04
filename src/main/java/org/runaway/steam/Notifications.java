@@ -29,7 +29,7 @@ public class Notifications {
         SteamRunnable.oldApps = new HashMap<>();
         SteamRunnable.newApps = new HashMap<>();
 
-        Thread.sleep(15000);
+        Thread.sleep(30000);
         HashMap<Integer, App> oldApps = SteamRunnable.getOldApps();
         HashMap<Integer, App> newApps = SteamRunnable.getNewApps();
 
@@ -40,23 +40,36 @@ public class Notifications {
                 if (i != null) {
                     StringBuilder sb = new StringBuilder(Icon.BELL.get() + " Новые скидки!\n\n")
                             .append("Изменения:\n");
-                    boolean hasSales = false;
-                    AtomicInteger atomicInteger = new AtomicInteger(1);
+                    boolean hasInfo = false;
                     for (Integer integer : i) {
                         App oldA = oldApps.get(integer);
                         App newA = newApps.get(integer);
 
                         if (oldA.getPrice().getDiscount() < newA.getPrice().getDiscount()) {
                             String old = oldA.getPrice().getFormated_price();
-                            sb.append(Icon.getNumberString(atomicInteger.getAndIncrement())).append(" ")
-                                    .append(oldA.getName()).append(" ")
+                            sb.append(Icon.CHECK.get()).append(" <b>")
+                                    .append(oldA.getName()).append("</b> ")
                                     .append(old == null ? "Предзаказ" : old).append(" ").append(Icon.RIGHT_ARROW.get()).append(" ")
                                     .append(newA.getPrice().getFormated_price()).append("\n");
-                            hasSales = true;
+                            hasInfo = true;
+                        }
+                        if (!oldA.getReleaseDate().equals(newA.getReleaseDate())) {
+                            String old = oldA.getReleaseDate();
+                            sb.append(Icon.DATE.get()).append(" <b>")
+                                    .append(oldA.getName()).append("</b> ")
+                                    .append(old).append(" ").append(Icon.RIGHT_ARROW.get()).append(" ")
+                                    .append(newA.getReleaseDate()).append("\n");
+                            hasInfo = true;
+                        }
+                        if (oldA.getPrice().isPreorder() && !newA.getPrice().isPreorder()) {
+                            sb.append(Icon.GAMEPAD.get()).append(" Только что вышла игра <b>")
+                                    .append(oldA.getName()).append("</b>, поспешите купить её! (<b>")
+                                    .append(newA.getPrice().getFormated_price()).append("</b>)");
+                            hasInfo = true;
                         }
                     }
                     try {
-                        if (hasSales) Utils.sendMessage(user_id, sb.toString());
+                        if (hasInfo) Utils.sendMessage(user_id, sb.toString());
                     } catch (UnsupportedEncodingException | MalformedURLException e) {
                         e.printStackTrace();
                     }

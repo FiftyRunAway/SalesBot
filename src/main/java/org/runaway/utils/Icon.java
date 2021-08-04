@@ -20,7 +20,8 @@ public enum Icon {
     BELL(":bell:"),
     RAINBOW(":rainbow:"),
     RIGHT_ARROW(":arrow_forward:"),
-    GAMEPAD(":video_game:");
+    GAMEPAD(":video_game:"),
+    DATE(":date:");
 
     private String value;
 
