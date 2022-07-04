@@ -152,7 +152,7 @@ public class UtilsDB {
         if (docExists(MongoDB.getAppIdsCollection(), app.getSteamId())) {
             Price newPrice = Steam.getOnlyPrice(app.getSteamId(), app.getAppType() == AppType.GAME);
 
-            App newApp = new App(app.getSteamId(), app.getName(), app.getAppType(),
+            App newApp = new App(app.getSteamId(), app.getName(), newPrice.isPreorder() ? AppType.PREORDER : AppType.GAME,
                     new Price(app.getAppType() == AppType.GAME, newPrice.getFormated_price(),
                             newPrice.getDiscount(), newPrice.getInitial_price(), newPrice.getFinal_price(), new Date()), app.getReleaseDate());
 

@@ -5,7 +5,10 @@ import org.runaway.utils.Vars;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
+import org.telegram.telegrambots.meta.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendVideo;
+import org.telegram.telegrambots.meta.api.objects.payments.Invoice;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -33,6 +36,16 @@ public abstract class MainCommand extends BotCommand {
             logger.error(String.format("Ошибка %s. Команда %s. Пользователь: %s", e.getMessage(), commandName, userName));
             e.printStackTrace();
         }
+    }
+
+    public void sendAnswer(AbsSender absSender, Long chatId, String commandName, String userName, String text, ReplyKeyboard keyboard, boolean header, SendInvoice.SendInvoiceBuilder sendInvoice) {
+      sendAnswer(absSender, chatId, commandName, userName, text, keyboard, header);
+      try {
+          absSender.execute(sendInvoice.build());
+      } catch (TelegramApiException e) {
+          logger.error(String.format("Ошибка %s. Команда %s. Пользователь: %s", e.getMessage(), commandName, userName));
+          e.printStackTrace();
+      }
     }
 
     public static String messageFormat(String text, boolean header) {

@@ -66,6 +66,8 @@ public class Bot extends TelegramLongPollingCommandBot {
         register(new RemoveAppCommand("remove", "Удалить Steam ID из списка"));
         register(new PricesCommand("prices", "Показать актуальные цены"));
         register(new NotificationsCommand("notify", "Включить/отключить уведосления"));
+        register(new DonateCommand("donate", "Поддержать разработчика"));
+
 
         registerDefaultAction((absSender, message) -> {
             SendMessage commandUnknownMessage = new SendMessage();
