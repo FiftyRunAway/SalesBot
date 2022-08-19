@@ -33,10 +33,10 @@ public class ActualCommand extends MainCommand {
 
         Long chatId = chat.getId();
         StringBuilder sb = new StringBuilder();
-        Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
         if (!UtilsDB.docExists(MongoDB.getBudgetCollection(), user.getId())) {
             sb.append("Сначала установите бюджет до конца календарного месяца!");
         } else {
+            Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
             int moneyLeft = d.get("budget", 0) - d.get("spent", 0);
             int daysLeft = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - new Date().getDay();
 

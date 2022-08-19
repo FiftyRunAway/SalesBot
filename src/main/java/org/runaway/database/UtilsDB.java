@@ -203,7 +203,7 @@ public class UtilsDB {
             MongoDB.getBudgetCollection().replaceOne(new BasicDBObject("id", user_id),
                     new Document("id", user_id)
                             .append("budget", d.get("budget"))
-                            .append("month", new Date().getMonth())
+                            .append("month", d.get("month"))
                             .append("spent", ((int)d.getOrDefault("spent", 0) + money)));
             return true;
         }
