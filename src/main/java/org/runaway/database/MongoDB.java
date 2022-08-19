@@ -32,6 +32,7 @@ public class MongoDB {
             users_collection = database.getCollection(Vars.DB_COLLECTION_USERS.getString());
             apps_collection = database.getCollection(Vars.DB_COLLECTION_APPS.getString());
             appids_collection = database.getCollection(Vars.DB_COLLECTION_APPIDS.getString());
+            budget_collection = database.getCollection(Vars.DB_COLLECTION_BUDGET.getString());
         } catch (Exception exception) {
             exception.printStackTrace();
             logger.error("Connection to MongoDB is failed");
