@@ -184,16 +184,17 @@ public class UtilsDB {
         return false;
     }
 
-    public static boolean setNewMonthlyBudget(long user_id, long money) {
+    public static void setNewMonthlyBudget(long user_id, long money) {
         if (docExists(MongoDB.getBudgetCollection(), user_id)) {
-            Document d = getValue(MongoDB.getBudgetCollection(), user_id).first();
-            MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
+            MongoDB.getBudgetCollection().replaceOne(new BasicDBObject("id", user_id),
                     new Document("id", user_id)
                             .append("budget", money)
                             .append("month", new Date().getMonth()));
-            return true;
+        } else {
+            MongoDB.getBudgetCollection().insertOne(new Document("id", user_id)
+                            .append("budget", money)
+                            .append("month", new Date().getMonth()));
         }
-        return false;
     }
 
     /**

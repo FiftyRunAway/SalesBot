@@ -34,7 +34,7 @@ public class SetMonthBudget extends MainCommand {
             try {
                 int money = Integer.parseInt(strings[0]);
                 UtilsDB.setNewMonthlyBudget(user.getId(), money);
-                sb.append(Icon.CHECK).append(" Вы успешно установили новый бюджет на этот месяц - <b>").append(money).append(" руб.</b>");
+                sb.append(Icon.CHECK.get()).append(" Вы успешно установили новый бюджет на этот месяц - <b>").append(money).append(" руб.</b>");
             } catch (NumberFormatException e) {
                 sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение...");
             }
