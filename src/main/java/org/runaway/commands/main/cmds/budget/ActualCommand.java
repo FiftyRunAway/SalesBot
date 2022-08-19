@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import javax.xml.crypto.Data;
 import java.util.Calendar;
@@ -33,26 +34,28 @@ public class ActualCommand extends MainCommand {
 
         Long chatId = chat.getId();
         StringBuilder sb = new StringBuilder();
-        Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
-        int moneyLeft = d.get("budget", 0) - d.get("spent", 0);
-        int daysLeft = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - new Date().getDay();
 
-        sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)
-                .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
-                .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
-                .append(moneyLeft / daysLeft).append(" руб.</b>");
-        /*if (!UtilsDB.docExists(MongoDB.getBudgetCollection(), user.getId())) {
+        if (!UtilsDB.docExists(MongoDB.getBudgetCollection(), user.getId())) {
             sb.append("Сначала установите бюджет до конца календарного месяца!");
         } else {
-            Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
-            int moneyLeft = d.get("budget", 0) - d.get("spent", 0);
-            int daysLeft = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - new Date().getDay();
+            try {
+                Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
+                sb.append("1");
+                int moneyLeft = d.get("budget", 0) - d.get("spent", 0);
+                sb.append("2");
+                int daysLeft = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - new Date().getDay();
+                sb.append("3");
 
-            sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)
-                    .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
-                    .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
-                    .append(moneyLeft / daysLeft).append(" руб.</b>");
-        }*/
+                sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)
+                        .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
+                        .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
+                        .append(moneyLeft / daysLeft).append(" руб.</b>");
+                sb.append("4");
+            } catch (Exception e) {
+                sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
+                return;
+            }
+        }
 
         sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
 
