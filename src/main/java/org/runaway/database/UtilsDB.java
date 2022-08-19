@@ -184,6 +184,18 @@ public class UtilsDB {
         return false;
     }
 
+    public static boolean setNewMonthlyBudget(long user_id, long money) {
+        if (docExists(MongoDB.getBudgetCollection(), user_id)) {
+            Document d = getValue(MongoDB.getBudgetCollection(), user_id).first();
+            MongoDB.getAppsCollection().replaceOne(new BasicDBObject("id", user_id),
+                    new Document("id", user_id)
+                            .append("budget", money)
+                            .append("month", new Date().getMonth()));
+            return true;
+        }
+        return false;
+    }
+
     /**
      *
      * @param steam_id

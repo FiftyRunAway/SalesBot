@@ -40,12 +40,6 @@ public abstract class MainCommand extends BotCommand {
 
     public void sendAnswer(AbsSender absSender, Long chatId, String commandName, String userName, String text, ReplyKeyboard keyboard, boolean header, SendInvoice.SendInvoiceBuilder sendInvoice) {
       sendAnswer(absSender, chatId, commandName, userName, text, keyboard, header);
-      try {
-          absSender.execute(sendInvoice.build());
-      } catch (TelegramApiException e) {
-          logger.error(String.format("Ошибка %s. Команда %s. Пользователь: %s", e.getMessage(), commandName, userName));
-          e.printStackTrace();
-      }
     }
 
     public static String messageFormat(String text, boolean header) {

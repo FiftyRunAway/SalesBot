@@ -20,6 +20,7 @@ public class MongoDB {
     private static MongoCollection<Document> users_collection;
     private static MongoCollection<Document> apps_collection;
     private static MongoCollection<Document> appids_collection;
+    private static MongoCollection<Document> budget_collection;
 
     public MongoDB() {
         try {
@@ -51,6 +52,10 @@ public class MongoDB {
 
     public static MongoCollection<Document> getAppIdsCollection() {
         return appids_collection;
+    }
+
+    public static MongoCollection<Document> getBudgetCollection() {
+        return budget_collection;
     }
 
     public static boolean isAuthenticate() {

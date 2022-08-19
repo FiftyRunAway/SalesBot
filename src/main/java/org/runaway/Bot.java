@@ -2,6 +2,7 @@ package org.runaway;
 
 import org.runaway.commands.main.MainCommand;
 import org.runaway.commands.main.cmds.*;
+import org.runaway.commands.main.cmds.budget.SetMonthBudget;
 import org.runaway.commands.service.cmds.HelpCommand;
 import org.runaway.commands.service.cmds.StartCommand;
 import org.runaway.database.MongoDB;
@@ -58,7 +59,6 @@ public class Bot extends TelegramLongPollingCommandBot {
 
     public Bot() {
         super();
-
         register(new StartCommand("start", "Стартовая команда"));
         register(new HelpCommand("help", "Помощь"));
         register(new ListCommand("list", "Список ваших SteamID"));
@@ -67,6 +67,7 @@ public class Bot extends TelegramLongPollingCommandBot {
         register(new PricesCommand("prices", "Показать актуальные цены"));
         register(new NotificationsCommand("notify", "Включить/отключить уведосления"));
         register(new DonateCommand("donate", "Поддержать разработчика"));
+        register(new SetMonthBudget("budget", "Установить бюджет на этот месяц"));
 
 
         registerDefaultAction((absSender, message) -> {
