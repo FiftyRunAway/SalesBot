@@ -197,6 +197,19 @@ public class UtilsDB {
         }
     }
 
+    public static boolean spentMoney(long user_id, long money) {
+        if (docExists(MongoDB.getBudgetCollection(), user_id)) {
+            Document d = getValue(MongoDB.getBudgetCollection(), user_id).first();
+            MongoDB.getBudgetCollection().replaceOne(new BasicDBObject("id", user_id),
+                    new Document("id", user_id)
+                            .append("budget", d.get("budget"))
+                            .append("month", new Date().getMonth())
+                            .append("spent", ((int)d.getOrDefault("spent", 0) + money)));
+            return true;
+        }
+        return false;
+    }
+
     /**
      *
      * @param steam_id
@@ -258,7 +271,7 @@ public class UtilsDB {
      * @param id
      * @return существует ли такой id в collection
      */
-    private static boolean docExists(MongoCollection<Document> collection, long id) {
+    public static boolean docExists(MongoCollection<Document> collection, long id) {
         long found = collection.countDocuments(Document.parse("{id : " + id + "}"));
         return found != 0;
     }

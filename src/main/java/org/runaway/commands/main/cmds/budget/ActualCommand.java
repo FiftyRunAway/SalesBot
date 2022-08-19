@@ -1,8 +1,9 @@
 package org.runaway.commands.main.cmds.budget;
 
+import org.bson.Document;
 import org.runaway.commands.main.MainCommand;
 import org.runaway.commands.main.cmds.AddAppCommand;
-import org.runaway.constructors.App;
+import org.runaway.database.MongoDB;
 import org.runaway.database.UtilsDB;
 import org.runaway.utils.Icon;
 import org.runaway.utils.Utils;
@@ -12,12 +13,14 @@ import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 
-import java.util.List;
+import javax.xml.crypto.Data;
+import java.util.Calendar;
+import java.util.Date;
 
-public class SetMonthBudget extends MainCommand {
+public class ActualCommand extends MainCommand {
     private Logger logger = LoggerFactory.getLogger(AddAppCommand.class.getName());
 
-    public SetMonthBudget(String identifier, String description) {
+    public ActualCommand(String identifier, String description) {
         super(identifier, description);
     }
 
@@ -30,17 +33,19 @@ public class SetMonthBudget extends MainCommand {
 
         Long chatId = chat.getId();
         StringBuilder sb = new StringBuilder();
-        if (strings.length == 1) {
-            try {
-                int money = Integer.parseInt(strings[0]);
-                UtilsDB.setNewMonthlyBudget(user.getId(), money);
-                sb.append(Icon.CHECK.get()).append(" Вы успешно установили новый бюджет на этот месяц - <b>").append(money).append(" руб.</b>");
-            } catch (NumberFormatException e) {
-                sb.append(Icon.NOT.get()).append(" Ввести можно только числовое значение...");
-            }
+        Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
+        if (!UtilsDB.docExists(MongoDB.getBudgetCollection(), user.getId())) {
+            sb.append("Сначала установите бюджет до конца календарного месяца!");
         } else {
-            sb.append("Введите сумму после /budget, которую собираетесь потратить в этом месяце");
+            int moneyLeft = d.get("budget", 0) - d.get("spent", 0);
+            int daysLeft = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - new Date().getDay();
+
+            sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)
+                    .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
+                    .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
+                    .append(moneyLeft / daysLeft).append(" руб.</b>");
         }
+
         sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
 
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
