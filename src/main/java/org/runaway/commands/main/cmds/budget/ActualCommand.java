@@ -39,7 +39,7 @@ public class ActualCommand extends MainCommand {
             sb.append("Сначала установите бюджет до конца календарного месяца!");
         } else {
             Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
-            long moneyLeft = d.getLong("budget") - d.getLong("spent");
+            long moneyLeft = Long.parseLong(d.get("budget").toString()) - Long.parseLong(d.get("spent").toString());
             long daysLeft = (long)Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - (long)new Date().getDay();
 
             sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)

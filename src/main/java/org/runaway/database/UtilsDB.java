@@ -205,9 +205,9 @@ public class UtilsDB {
             Document d = getValue(MongoDB.getBudgetCollection(), user_id).first();
             MongoDB.getBudgetCollection().replaceOne(new BasicDBObject("id", user_id),
                     new Document("id", user_id)
-                            .append("budget", d.getLong("budget"))
-                            .append("month", d.getLong("month"))
-                            .append("spent", (d.getLong("spent") + money)));
+                            .append("budget", Long.parseLong(d.get("budget").toString()))
+                            .append("month", Long.parseLong(d.get("month").toString()))
+                            .append("spent", (Long.parseLong(d.get("spent").toString()) + money)));
             return true;
         }
         return false;
