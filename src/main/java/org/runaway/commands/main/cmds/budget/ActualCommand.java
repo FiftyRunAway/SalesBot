@@ -40,11 +40,11 @@ public class ActualCommand extends MainCommand {
         } else {
             Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
             long moneyLeft = Long.parseLong(d.get("budget").toString()) - Long.parseLong(d.get("spent").toString());
-            long daysLeft = (long)Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - (long)new Date().getDay();
+            long daysLeft = (long)Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - (long)Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
             sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)
                     .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
-                    .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
+                    .append("\n\n").append(Icon.RIGHT_ARROW.get()).append(" Вы можете сегодня потратить - <b>")
                     .append(moneyLeft / daysLeft).append(" руб.</b>");
         }
 
