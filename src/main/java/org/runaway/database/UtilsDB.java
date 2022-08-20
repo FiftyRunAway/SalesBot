@@ -192,7 +192,8 @@ public class UtilsDB {
                             .append("month", new Date().getMonth())
                             .append("spent", 0));
         } else {
-            MongoDB.getBudgetCollection().insertOne(new Document("id", user_id)
+            MongoDB.getBudgetCollection().insertOne(
+                    new Document("id", user_id)
                             .append("budget", money)
                             .append("month", new Date().getMonth())
                     .append("spent", 0));
@@ -206,7 +207,7 @@ public class UtilsDB {
                     new Document("id", user_id)
                             .append("budget", d.get("budget"))
                             .append("month", d.get("month"))
-                            .append("spent", ((int)d.getOrDefault("spent", 0) + money)));
+                            .append("spent", ((long)d.getOrDefault("spent", 0) + money)));
             return true;
         }
         return false;
