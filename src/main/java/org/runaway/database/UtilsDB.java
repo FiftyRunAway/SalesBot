@@ -189,11 +189,13 @@ public class UtilsDB {
             MongoDB.getBudgetCollection().replaceOne(new BasicDBObject("id", user_id),
                     new Document("id", user_id)
                             .append("budget", money)
-                            .append("month", new Date().getMonth()));
+                            .append("month", new Date().getMonth())
+                            .append("spent", 0));
         } else {
             MongoDB.getBudgetCollection().insertOne(new Document("id", user_id)
                             .append("budget", money)
-                            .append("month", new Date().getMonth()));
+                            .append("month", new Date().getMonth())
+                    .append("spent", 0));
         }
     }
 

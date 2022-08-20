@@ -50,7 +50,6 @@ public class ActualCommand extends MainCommand {
                         .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
                         .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
                         .append(moneyLeft / daysLeft).append(" руб.</b>");
-                sb.append("4");
             } catch (Exception e) {
                 sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
                 return;
