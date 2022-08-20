@@ -38,22 +38,14 @@ public class ActualCommand extends MainCommand {
         if (!UtilsDB.docExists(MongoDB.getBudgetCollection(), user.getId())) {
             sb.append("Сначала установите бюджет до конца календарного месяца!");
         } else {
-            try {
-                Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
-                sb.append("1");
-                long moneyLeft = d.get("budget", 0) - d.get("spent", 0);
-                sb.append("2");
-                long daysLeft = (long)Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - (long)new Date().getDay();
-                sb.append("3");
+            Document d = UtilsDB.getValue(MongoDB.getBudgetCollection(), user.getId()).first();
+            long moneyLeft = d.getLong("budget") - d.getLong("spent");
+            long daysLeft = (long)Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH) - (long)new Date().getDay();
 
-                sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)
-                        .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
-                        .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
-                        .append(moneyLeft / daysLeft).append(" руб.</b>");
-            } catch (Exception e) {
-                sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
-                return;
-            }
+            sb.append(Icon.DATE.get()).append(" Ваш бюджет на оставшиеся ").append(daysLeft)
+                    .append(" дн. - <b>").append(moneyLeft).append(" руб.</b>")
+                    .append("\n\n").append(Icon.RIGHT_ARROW).append("Вы можете сегодня потратить - <b>")
+                    .append(moneyLeft / daysLeft).append(" руб.</b>");
         }
 
         sendAnswer(absSender, chatId, this.getCommandIdentifier(), userName, sb.toString(), null, false);
