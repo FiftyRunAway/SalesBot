@@ -1,0 +1,11 @@
+
+u
+java:S5993"9Change the visibility of this constructor to "protected".(ôŠíÓJ$750f5c45-7acb-4d35-8b93-a2bb519e560d
+w	java:S107)"<Method has 8 parameters, which is greater than 7 authorized.(¼á½J$6565b9b1-62f7-4671-b572-798d5041d8ea
+n
+java:S1172)"2Remove this unused method parameter "sendInvoice".(¼á½J$601d4cc8-b99c-4cf2-9b04-56522b017b2d
+‘
+java:S1128
+"VRemove this unused import 'org.telegram.telegrambots.meta.api.methods.send.SendVideo'.(÷”„J$09e40347-6020-4e8c-a022-15418841ebc3
+™
+java:S1128"XRemove this unused import 'org.telegram.telegrambots.meta.api.objects.payments.Invoice'.(Î±Ñ”ıÿÿÿÿJ$0d08805a-d760-42f3-ae84-a7d0c9b6bc50

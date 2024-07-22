@@ -1,0 +1,13 @@
+
+n	java:S116"YRename this field "formated_price" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Šáèå
+r	java:S116	"XRename this field "initial_price" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îÜ¬ñýÿÿÿÿ
+p	java:S116
+"VRename this field "final_price" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Üªßÿÿÿÿÿ
+p	java:S116"VRename this field "last_update" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÇšïûÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÝºÀ•ÿÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ°Úöÿÿÿÿÿ
+h	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÓð€ÿÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Ý¥–
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Ý¥–
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Ý¥–
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Ý¥–

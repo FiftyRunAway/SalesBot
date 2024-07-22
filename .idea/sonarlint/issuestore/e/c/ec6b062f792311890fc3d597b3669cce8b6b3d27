@@ -1,0 +1,7 @@
+
+f	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿú…ì
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ß«ƒüýÿÿÿÿ
+h
+java:S37769"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ÿú…ì
+Y
+java:S1659="CDeclare "second" and all following declarations on a separate line.(»Ž¡§
