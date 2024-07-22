@@ -1,0 +1,25 @@
+
+q
+java:S3008"[Rename this field "users_collection" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ÎÙ
+p
+java:S3008"ZRename this field "apps_collection" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü×‘É
+r
+java:S3008"\Rename this field "appids_collection" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞİÚ
+y
+java:S3008"\Rename this field "budget_collection" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øº8şüÌ´«0
+3
+java:S1118"Hide this public constructor.(‘ŸÂ“
+>
+java:S3010"(Remove this assignment of "mongoClient".(ÓÒ¡û
+;
+java:S3010"%Remove this assignment of "database".(ö¡Ãœ
+H
+java:S3010 "-Remove this assignment of "users_collection".(éÄÑ¼ÿÿÿÿÿ
+B
+java:S3010!",Remove this assignment of "apps_collection".(©‰ËÄ
+I
+java:S3010"".Remove this assignment of "appids_collection".(ÌäÑ£úÿÿÿÿ
+P
+java:S3010#".Remove this assignment of "budget_collection".(·”—üûÿÿÿÿ8ù‡µ«0
+?
+java:S3010*")Remove this assignment of "authenticate".(Ãåö

@@ -1,0 +1,37 @@
+
+f
+java:S1192ˆ"ODefine a constant instead of duplicating this literal "formated_price" 3 times.(ò€ïÁ
+b
+java:S1192Á"FDefine a constant instead of duplicating this literal "spent" 4 times.(Éã·üÿÿÿÿ
+]
+java:S1192À"FDefine a constant instead of duplicating this literal "month" 4 times.(ŠÂ°
+d
+java:S11921"NDefine a constant instead of duplicating this literal "notifications" 8 times.(ë¨®÷
+^
+java:S1192¿"GDefine a constant instead of duplicating this literal "budget" 4 times.(¢Õ³Û
+k	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á²ºÿÿÿÿÿ
+f	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚§ú
+g	java:S117ˆ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò€ïÁ
+l	java:S117Š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÜ°Îüÿÿÿÿ
+l	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñˆ¹ùúÿÿÿÿ
+g	java:S117Œ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Œó©
+l	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô­¤Ùûÿÿÿÿ
+g	java:S117«"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬ºÃŞ
+g	java:S117»"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¹Œğ
+l	java:S117Ë"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î½¥ùÿÿÿÿ
+l	java:S117İ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ı§‘«øÿÿÿÿ
+g	java:S117ş"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¿‚–
+:
+java:S2629"$Invoke method(s) only conditionally.(‰¸ù¼
+:
+java:S2629m"$Invoke method(s) only conditionally.(Éò½
+E
+java:S3416"*Update this logger to use "UtilsDB.class".(öáØ‚øÿÿÿÿ
+P
+java:S1118":Add a private constructor to hide the implicit public one.(ƒêÖÂ
+G
+java:S1874À"0Remove this use of "getMonth"; it is deprecated.(ŠÂ°
+G
+java:S1874Æ"0Remove this use of "getMonth"; it is deprecated.(ŠÂ°
+B
+java:S1168‚"+Return an empty collection instead of null.(¥¹ï

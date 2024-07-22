@@ -1,0 +1,19 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(‡í•£øÿÿÿÿ
+k	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†û×ûÿÿÿÿ
+k	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈõõŒıÿÿÿÿ
+k	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌœÁÀúÿÿÿÿ
+f	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²İ·£
+f	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À¶İ¶
+k	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌœÁÀúÿÿÿÿ
+f	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²İ·£
+f	java:S117P"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À¶İ¶
+o
+java:S2259N"TA "NullPointerException" could be thrown; "response_priceoverview" is nullable here.(¡‹±üÿÿÿÿ
+o
+java:S22593"TA "NullPointerException" could be thrown; "response_priceoverview" is nullable here.(â©Şùÿÿÿÿ
+h
+java:S2259/"RA "NullPointerException" could be thrown; "response_releaseDate" is nullable here.(“¡¯ò
+a
+java:S2259+"KA "NullPointerException" could be thrown; "response_name" is nullable here.(¬á”
